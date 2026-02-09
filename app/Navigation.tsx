@@ -50,7 +50,7 @@ import { HoldersLandingFragment } from './fragments/holders/HoldersLandingFragme
 import { HoldersAppFragment } from './fragments/holders/HoldersAppFragment';
 import { BiometricsSetupFragment } from './fragments/BiometricsSetupFragment';
 import { KeyStoreMigrationFragment } from './fragments/secure/KeyStoreMigrationFragment';
-import { useLanguage, useNetwork, useSupportAuth, useTheme } from './engine/hooks';
+import { useAllowedDomains, useLanguage, useNetwork, useSupportAuth, useTheme } from './engine/hooks';
 import { useNavigationTheme } from './engine/hooks';
 import { useRecoilValue } from 'recoil';
 import { appStateAtom } from './engine/state/appState';
@@ -423,6 +423,9 @@ export const Navigation = memo(() => {
     const appState = useRecoilValue(appStateAtom);
     const { isTestnet } = useNetwork();
     const [lang] = useLanguage();
+
+    // Prefetch allowed domains for navigation protection
+    useAllowedDomains();
 
     const initial = useMemo(() => {
         const lastLink = CachedLinking.getLastLink();
