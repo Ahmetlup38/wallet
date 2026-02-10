@@ -6,6 +6,8 @@ import { getQueryData } from "../../utils/getQueryData";
 
 // Built-in allowed domains (fallback)
 const builtInAllowedDomains: string[] = [
+    'challenges.cloudflare.com',
+    '.challenges.cloudflare.com',
     '.sumsub.com',
     '.kauri.finance',
     'mc.yandex.ru',
